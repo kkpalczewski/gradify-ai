@@ -1,17 +1,25 @@
 import { NextResponse } from 'next/server'
-import sgMail from '@sendgrid/mail'
-
-// Initialize SendGrid with API key
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || '')
+import nodemailer from 'nodemailer'
 
 export async function POST(request: Request) {
   try {
     const { name, company, email, phone, message } = await request.json()
 
+    // Create a transporter using SMTP
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    })
+
     // Email content
-    const msg = {
+    const mailOptions = {
+      from: process.env.SMTP_USER,
       to: 'contact@gradify.ai',
-      from: 'contact@gradify.ai', // Verified sender in SendGrid
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -25,7 +33,7 @@ export async function POST(request: Request) {
     }
 
     // Send email
-    await sgMail.send(msg)
+    await transporter.sendMail(mailOptions)
 
     return NextResponse.json({ success: true, message: 'Email sent successfully' })
   } catch (error) {
