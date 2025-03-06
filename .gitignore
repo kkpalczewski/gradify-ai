@@ -91,7 +91,6 @@ Thumbs.db
 *.txt
 *.rtf
 *.csv
-*.json
 *.xml
 *.yaml
 *.yml
