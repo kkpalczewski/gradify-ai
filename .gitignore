@@ -49,7 +49,6 @@ ehthumbs.db
 Thumbs.db
 
 # Media files
-*.mp4
 *.mov
 *.avi
 *.wmv
@@ -61,12 +60,6 @@ Thumbs.db
 *.mpeg
 *.3gp
 *.3g2
-*.gif
-*.jpg
-*.jpeg
-*.png
-*.webp
-*.svg
 *.ico
 *.bmp
 *.tiff
@@ -91,7 +84,6 @@ Thumbs.db
 *.txt
 *.rtf
 *.csv
-*.json
 *.xml
 *.yaml
 *.yml
