@@ -1,74 +1,123 @@
 import Image from "next/image"
 import Link from "next/link"
+import { getTechLogos } from "./tech-logos"
+
+interface CircleConfig {
+  logos: string[]
+  containerSize: {
+    mobile: string
+    desktop: string
+  }
+  imageSize: {
+    mobile: string
+    desktop: string
+  }
+}
 
 export function TechAgnostic() {
-  // Array of tech logos to display in the circle
-  const techLogos = Array(15).fill("/placeholder.svg?height=40&width=40")
+  const allLogos = getTechLogos()
+  // Split logos into three groups
+  const logosPerCircle = Math.ceil(allLogos.length / 3)
+  const innerLogos = allLogos.slice(0, logosPerCircle)
+  const middleLogos = allLogos.slice(logosPerCircle, logosPerCircle * 2)
+  const outerLogos = allLogos.slice(logosPerCircle * 2)
+
+  const circleConfigs: CircleConfig[] = [
+    {
+      logos: innerLogos,
+      containerSize: {
+        mobile: "w-7 h-7",
+        desktop: "sm:w-9 sm:h-9"
+      },
+      imageSize: {
+        mobile: "w-6 h-6",
+        desktop: "sm:w-8 sm:h-8"
+      }
+    },
+    {
+      logos: middleLogos,
+      containerSize: {
+        mobile: "w-7 h-7",
+        desktop: "sm:w-9 sm:h-9"
+      },
+      imageSize: {
+        mobile: "w-6 h-6",
+        desktop: "sm:w-8 sm:h-8"
+      }
+    },
+    {
+      logos: outerLogos,
+      containerSize: {
+        mobile: "w-7 h-7",
+        desktop: "sm:w-9 sm:h-9"
+      },
+      imageSize: {
+        mobile: "w-6 h-6",
+        desktop: "sm:w-8 sm:h-8"
+      }
+    }
+  ]
+
+  const calculateRadius = (logos: string[], baseRadius: number) => {
+    const logoCount = logos.length
+    const adjustmentFactor = Math.min(1, 15 / logoCount) // 15 is our target number of logos per circle
+    return baseRadius * adjustmentFactor
+  }
+
+  const renderCircle = (config: CircleConfig, circleIndex: number) => {
+    // Base radius for each circle
+    const baseRadius = circleIndex === 0 ? 30 : circleIndex === 1 ? 40 : 50
+    const radius = calculateRadius(config.logos, baseRadius)
+    
+    // Add rotation offset for each circle (approximately 25 degrees per circle)
+    const rotationOffset = (Math.PI / 7) + (circleIndex * 0.5) // Base rotation + small increment per circle
+
+    return config.logos.map((logo, index) => {
+      const angle = (index / config.logos.length) * 2 * Math.PI + rotationOffset
+      const left = 50 + radius * Math.cos(angle)
+      const top = 50 + radius * Math.sin(angle)
+
+      return (
+        <div
+          key={`circle-${circleIndex}-${index}`}
+          className={`absolute ${config.containerSize.mobile} ${config.containerSize.desktop} bg-white rounded-full flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 overflow-hidden`}
+          style={{
+            left: `${left}%`,
+            top: `${top}%`,
+          }}
+        >
+          <Image
+            src={logo}
+            alt={`Tech Logo ${index + 1}`}
+            width={40}
+            height={40}
+            className={`${config.imageSize.mobile} ${config.imageSize.desktop} object-cover`}
+          />
+        </div>
+      )
+    })
+  }
 
   return (
     <section className="py-16 bg-[#1a1a1a] relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col items-center">
-          <div className="relative w-64 h-64 md:w-80 md:h-80 mb-8">
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 mb-8">
             {/* Center text */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-20">
-              <h2 className="text-2xl font-bold mb-2">We are tech</h2>
-              <p className="text-2xl font-bold">agnostic</p>
+              <h2 className="text-l sm:text-xl font-bold mb-2">We are tech</h2>
+              <p className="text-l sm:text-xl font-bold">agnostic</p>
             </div>
 
-            {/* Circle of tech logos */}
+            {/* Three circles of tech logos */}
             <div className="absolute inset-0 z-10">
               <div className="relative w-full h-full">
-                {techLogos.map((logo, index) => {
-                  // Calculate position around the circle
-                  const angle = (index / techLogos.length) * 2 * Math.PI
-                  const radius = 120 // Adjust based on circle size
-                  const left = 50 + radius * Math.cos(angle)
-                  const top = 50 + radius * Math.sin(angle)
-
-                  return (
-                    <div
-                      key={index}
-                      className="absolute w-10 h-10 bg-white rounded-full flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2"
-                      style={{
-                        left: `${left}%`,
-                        top: `${top}%`,
-                      }}
-                    >
-                      <Image
-                        src={logo || "/placeholder.svg"}
-                        alt={`Tech Logo ${index + 1}`}
-                        width={40}
-                        height={40}
-                        className="w-6 h-6 object-contain"
-                      />
-                    </div>
-                  )
-                })}
+                {circleConfigs.map((config, index) => renderCircle(config, index))}
               </div>
             </div>
 
-            {/* Yellow circle border */}
-            <div className="absolute inset-0 border-2 border-[#f0cc22] rounded-full"></div>
 
-            {/* Yellow dots/accents */}
-            <div className="absolute bottom-0 right-0 w-24 h-12">
-              <Image
-                src="/placeholder.svg?height=48&width=96"
-                alt="Yellow Accent"
-                width={96}
-                height={48}
-                className="w-full h-full object-contain"
-              />
-            </div>
           </div>
-
-          <Link
-            href="/technologies"
-            className="bg-[#f0cc22] hover:bg-[#fdbf2d] text-black px-6 py-2 rounded-md font-medium"
-          >
-            Learn more
-          </Link>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ContactForm } from "@/components/sections/contact/contact-form"
 import { ContactInfo } from "@/components/sections/contact/contact-info"
-import { TechAgnosticCircle } from "@/components/sections/home/tech-agnostic-circle"
+import { TechAgnostic } from "@/components/sections/home/tech-agnostic"
 
 export default function AboutUsPage() {
   return (
@@ -153,7 +153,7 @@ export default function AboutUsPage() {
               </div>
             </div>
             <div className="bg-white p-8 flex items-center justify-center">
-              <TechAgnosticCircle />
+              <TechAgnostic />
             </div>
           </div>
         </div>

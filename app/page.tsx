@@ -19,7 +19,7 @@ export default function Home() {
             playsInline
             className="object-cover w-full h-full opacity-30"
           >
-            <source src="/home.mp4" type="video/mp4" />
+            <source src="/home/home.mp4" type="video/mp4" />
           </video>
         </div>
         <div className="container mx-auto px-6 md:px-12 relative z-10">
