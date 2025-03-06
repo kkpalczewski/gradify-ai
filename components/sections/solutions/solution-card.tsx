@@ -8,8 +8,8 @@ interface SolutionProps {
     image: string
     description: string
     contactLabel: string
-    formInstructions: string,
-    sampleRecommendationsPdf: string
+    formInstructions: string
+    sampleRecommendationsPdf?: string
   }
   index: number
   totalSolutions: number
@@ -50,7 +50,7 @@ export function SolutionCard({ solution, index, totalSolutions }: SolutionProps)
           <p className="text-xs text-gray-400">{solution.formInstructions}</p>
         </div>
 
-        {index !== totalSolutions - 1 ? (
+        {solution.sampleRecommendationsPdf && index !== totalSolutions - 1 ? (
           <Link
             href={solution.sampleRecommendationsPdf}
             target="_blank"
