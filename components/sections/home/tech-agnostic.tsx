@@ -14,7 +14,11 @@ interface CircleConfig {
   }
 }
 
-export function TechAgnostic() {
+interface TechAgnosticProps {
+  clickable?: boolean
+}
+
+export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
   const allLogos = getTechLogos()
   // Split logos into three groups
   const logosPerCircle = Math.ceil(allLogos.length / 3)
@@ -98,14 +102,14 @@ export function TechAgnostic() {
     })
   }
 
-  return (
-    <section className="py-16 bg-[#1a1a1a] relative overflow-hidden">
+  const sectionContent = (
+    <section className={`py-12 bg-[#1a1a1a] relative overflow-hidden ${clickable ? 'cursor-pointer hover:bg-[#1f1f1f] transition-colors' : ''}`}>
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col items-center">
-          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 mb-8">
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
             {/* Center text */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-20">
-              <h2 className="text-l sm:text-xl font-bold mb-2">We are tech</h2>
+              <h2 className="text-l sm:text-xl font-bold mb-1">We are tech</h2>
               <p className="text-l sm:text-xl font-bold">agnostic</p>
             </div>
 
@@ -115,17 +119,33 @@ export function TechAgnostic() {
                 {circleConfigs.map((config, index) => renderCircle(config, index))}
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
 
-      {/* Background stars/dots */}
+      {/* Background video */}
       <div className="absolute inset-0 opacity-30">
-        <Image src="/placeholder.svg?height=800&width=1600" alt="Star Background" fill className="object-cover" />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/tech_agnostic/tech_agnostic.mp4" type="video/mp4" />
+        </video>
       </div>
     </section>
   )
+
+  if (clickable) {
+    return (
+      <Link href="/about-us#tech-agnostic" className="block">
+        {sectionContent}
+      </Link>
+    )
+  }
+
+  return sectionContent
 }
 

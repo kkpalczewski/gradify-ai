@@ -62,7 +62,7 @@ export default function Home() {
       <BusinessTech />
 
       {/* Tech Agnostic Section */}
-      <TechAgnostic />
+      <TechAgnostic clickable />
 
       {/* Contact Us Section */}
       <section className="py-16 bg-[#1a1a1a]" id="contact">

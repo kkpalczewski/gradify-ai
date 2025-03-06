@@ -118,7 +118,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Tech Agnostic Section */}
-      <section className="py-16">
+      <section id="tech-agnostic" className="py-16">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-[#141416] rounded-lg overflow-hidden">
             <div className="p-8">

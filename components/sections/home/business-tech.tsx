@@ -21,7 +21,7 @@ export function BusinessTech() {
                 Depending on our customers specific needs, we partner with them in different forms:
               </p>
               <ul className="space-y-2 mb-8">
-                <li>• Executive end-to-end projects</li>
+                <li>• Executing end-to-end projects</li>
                 <li>• Team augmentation</li>
                 <li>• Training, data strategy, and use case ideation</li>
               </ul>

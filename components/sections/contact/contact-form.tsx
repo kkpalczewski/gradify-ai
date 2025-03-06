@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 
 export function ContactForm() {
@@ -12,21 +11,67 @@ export function ContactForm() {
     phone: "",
     message: "",
   })
+  const [status, setStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission logic here
-    console.log("Form submitted:", formData)
-    // Reset form or show success message
+    setIsSubmitting(true)
+    setStatus({ type: null, message: '' })
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setStatus({
+          type: 'success',
+          message: 'Thank you for your message. We will get back to you soon!'
+        })
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          message: "",
+        })
+      } else {
+        throw new Error(data.message || 'Failed to send message')
+      }
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: 'Sorry, there was an error sending your message. Please try again later.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {status.type && (
+        <div className={`p-4 rounded-md ${
+          status.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+        }`}>
+          {status.message}
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="name" className="block text-sm text-gray-400 mb-1">
@@ -105,9 +150,10 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="w-full bg-[#f0cc22] hover:bg-[#fdbf2d] text-black font-medium py-3 rounded-md transition-colors"
+        disabled={isSubmitting}
+        className="w-full bg-[#f0cc22] hover:bg-[#fdbf2d] text-black font-medium py-3 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Submit
+        {isSubmitting ? 'Sending...' : 'Submit'}
       </button>
     </form>
   )
