@@ -101,6 +101,7 @@ export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
       )
     })
   }
+  const techAgnosticVideoUrl = "https://player.vimeo.com/video/1063532026?h=3bf80432e2&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1"
 
   const sectionContent = (
     <section className={`py-12 bg-[#1a1a1a] relative overflow-hidden ${clickable ? 'cursor-pointer hover:bg-[#1f1f1f] transition-colors' : ''}`}>
@@ -125,15 +126,16 @@ export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
 
       {/* Background video */}
       <div className="absolute inset-0 opacity-30">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/tech_agnostic/tech_agnostic.mp4" type="video/mp4" />
-        </video>
+        <iframe
+            src={techAgnosticVideoUrl}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            allow="playsinline; autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            style={{
+              minWidth: '150vw', // width is not scalling to 100% of the screen - do this hack is needed to make the video full screen
+              minHeight: '150vh' // height is not scalling to 100% of the screen - do this hack is needed to make the video full screen
+            }}
+          />
       </div>
     </section>
   )
