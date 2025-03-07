@@ -7,6 +7,7 @@ export function Testimonials() {
       logo: "/customers/galvanize/logo.jpg",
       logoAlt: "Galvanize Logo",
       person: "Jason Strand", 
+      linkedInUrl: "https://www.linkedin.com/in/jasontstrand/",
       personImage: "/customers/galvanize/jason_strand.jpg",
       title: "Director of Enterprise Engagement @ Galvanize, Inc",
       quote:
@@ -18,6 +19,7 @@ export function Testimonials() {
       logo: "/customers/deepsense_ai/logo.jpg",
       logoAlt: "DeepSense.ai Logo",
       person: "Robert Bogucki",
+      linkedInUrl: "https://www.linkedin.com/in/robert-bogucki/",
       personImage: "/customers/deepsense_ai/robert_bogucki.jpg",
       title: "Chief Technology Officer @ deepsense.ai",
       quote:
@@ -29,6 +31,7 @@ export function Testimonials() {
       logo: "/customers/sellectra/logo.jpg",
       logoAlt: "Sellectra Logo",
       person: "Peter Ratynski",
+      linkedInUrl: "https://www.linkedin.com/in/peter-ratynski-365276a9/",
       personImage: "/customers/sellectra/peter_ratynski.jpg",
       title: "Managing Director @ sellectra GmbH",
       quote:
@@ -41,7 +44,7 @@ export function Testimonials() {
   return (
     <section className="py-8">
       <div className="container mx-auto px-6 md:px-12">
-        <h2 className="text-4xl font-bold text-center mb-12">Our customers</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">What our partners say</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {testimonials.map((testimonial, index) => (
             <div
@@ -75,7 +78,24 @@ export function Testimonials() {
                     </div>
                   </div>
                   <div className="text-left">
-                    <h4 className={`font-medium ${index === 1 ? "text-black" : "text-black"}`}>{testimonial.person}</h4>
+                    <div className="flex items-center gap-2">
+                      <h4 className={`font-medium ${index === 1 ? "text-black" : "text-black"}`}>{testimonial.person}</h4>
+                      <Link
+                        href={testimonial.linkedInUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-black hover:text-[#0077b5] transition-colors"
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                      </Link>
+                    </div>
                     <p className={`text-sm ${index === 1 ? "text-gray-700" : "text-gray-800"}`}>{testimonial.title}</p>
                   </div>
                 </div>

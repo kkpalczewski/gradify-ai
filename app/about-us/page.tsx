@@ -4,58 +4,73 @@ import { ContactForm } from "@/components/sections/contact/contact-form"
 import { ContactInfo } from "@/components/sections/contact/contact-info"
 import { TechAgnostic } from "@/components/sections/home/tech-agnostic"
 
+const aboutUsVideoUrl = "https://player.vimeo.com/video/1063569301?h=1cdbbf6f63&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1"
+
 export default function AboutUsPage() {
   return (
     <main className="min-h-screen bg-[#1a1a1a] text-white">
       {/* Our Mission Section */}
       <section className="relative bg-[#141416] py-16">
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src="/placeholder.svg?height=600&width=1200"
-            alt="Background Pattern"
-            fill
-            className="object-cover opacity-30"
+        <div className="absolute inset-0 opacity-30 overflow-hidden">
+          <iframe
+            src={aboutUsVideoUrl}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            allow="playsinline; autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            style={{
+              minWidth: '300vw', // width is not scalling to 100% of the screen - do this hack is needed to make the video full screen
+              minHeight: '300vh' // height is not scalling to 100% of the screen - do this hack is needed to make the video full screen
+            }}
           />
         </div>
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-[#f0cc22] mb-6">Our Mission</h1>
-              <div className="space-y-4">
-                <p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#f0cc22]">Our Mission</h1>
+              <div className="space-y-4 text-gray-300">
+                <p className="text-lg">
                   Every day, we strive to act, work and deliver in such a way that we can be proud of the people and
                   professionals we are.
                 </p>
-                <p>We want to build solutions which bring tangible business value for our partners, based on data.</p>
-                <p>We provide solutions that we truly believe in.</p>
+                <p className="text-lg">
+                  We want to build solutions which bring tangible business value for our partners, based on data.
+                </p>
+                <p className="text-lg">
+                  We provide solutions that we truly believe in.
+                </p>
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="relative">
-                <Image
-                  src="/placeholder.svg?height=300&width=300"
-                  alt="Krzysztof Palczewski"
-                  width={300}
-                  height={300}
-                  className="rounded-lg"
-                />
-                <div className="absolute bottom-4 left-4 bg-black bg-opacity-70 p-3 rounded-md">
-                  <p className="font-medium">Krzysztof Palczewski</p>
-                  <p className="text-sm text-gray-300 flex items-center">
+              <div className="relative w-[200px] h-[300px]">
+                <div className="absolute inset-0 rounded-lg overflow-hidden border-2 border-[#f0cc22]">
+                  <Image
+                    src="/about_us/founder_photo.avif"
+                    alt="Krzysztof Palczewski"
+                    //width={250}
+                    //height={250}
+                    fill
+                    className="object-cover object-center h-full"
+                  />
+                </div>
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#141416] p-1 rounded-lg shadow-lg border border-[#f0cc22] w-[120%]">
+                  <p className="font-medium text-lg text-center">Krzysztof Palczewski</p>
+                  <p className="text-sm text-gray-300 flex items-center justify-center gap-2 mt-1">
                     <svg
-                      className="w-4 h-4 mr-1"
-                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4"
+                      fill="currentColor"
                       viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                      aria-hidden="true"
                     >
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="12" cy="7" r="4"></circle>
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
-                    Founder & CEO
+                    <a
+                      href="https://www.linkedin.com/in/k-palczewski/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#0077b5] transition-colors"
+                    >
+                      Founder & CEO
+                    </a>
                   </p>
                 </div>
               </div>
