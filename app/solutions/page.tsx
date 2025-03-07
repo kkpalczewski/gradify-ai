@@ -57,16 +57,12 @@ export default function SolutionsPage() {
     <main className="min-h-screen bg-[#1a1a1a] text-white">
       {/* Hero Section */}
       <section className="relative bg-[#141416] py-16 md:py-24">
-        <div className="absolute inset-0 opacity-30 overflow-hidden">
-          <iframe
-            src={letsGrowTogetherVideoUrl}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            allow="playsinline; autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            style={{
-              minWidth: '150vw', // width is not scalling to 100% of the screen - do this hack is needed to make the video full screen
-              minHeight: '150vh' // height is not scalling to 100% of the screen - do this hack is needed to make the video full screen
-            }}
+        {/* Background image container */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img 
+            src="/thumb.jpg"
+            alt="Background"
+            className="absolute inset-0 w-full h-full object-cover opacity-30"
           />
         </div>
         <div className="container mx-auto px-6 md:px-12 relative z-10">

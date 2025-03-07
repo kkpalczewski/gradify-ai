@@ -20,7 +20,6 @@ interface TechAgnosticProps {
 
 export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
   const allLogos = getTechLogos()
-  // Split logos into three groups
   const logosPerCircle = Math.ceil(allLogos.length / 3)
   const innerLogos = allLogos.slice(0, logosPerCircle)
   const middleLogos = allLogos.slice(logosPerCircle, logosPerCircle * 2)
@@ -29,52 +28,24 @@ export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
   const circleConfigs: CircleConfig[] = [
     {
       logos: innerLogos,
-      containerSize: {
-        mobile: "w-7 h-7",
-        desktop: "sm:w-9 sm:h-9"
-      },
-      imageSize: {
-        mobile: "w-6 h-6",
-        desktop: "sm:w-8 sm:h-8"
-      }
+      containerSize: { mobile: "w-7 h-7", desktop: "sm:w-9 sm:h-9" },
+      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" }
     },
     {
       logos: middleLogos,
-      containerSize: {
-        mobile: "w-7 h-7",
-        desktop: "sm:w-9 sm:h-9"
-      },
-      imageSize: {
-        mobile: "w-6 h-6",
-        desktop: "sm:w-8 sm:h-8"
-      }
+      containerSize: { mobile: "w-7 h-7", desktop: "sm:w-9 sm:h-9" },
+      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" }
     },
     {
       logos: outerLogos,
-      containerSize: {
-        mobile: "w-7 h-7",
-        desktop: "sm:w-9 sm:h-9"
-      },
-      imageSize: {
-        mobile: "w-6 h-6",
-        desktop: "sm:w-8 sm:h-8"
-      }
+      containerSize: { mobile: "w-7 h-7", desktop: "sm:w-9 sm:h-9" },
+      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" }
     }
   ]
 
-  const calculateRadius = (logos: string[], baseRadius: number) => {
-    const logoCount = logos.length
-    const adjustmentFactor = Math.min(1, 15 / logoCount) // 15 is our target number of logos per circle
-    return baseRadius * adjustmentFactor
-  }
-
   const renderCircle = (config: CircleConfig, circleIndex: number) => {
-    // Base radius for each circle
-    const baseRadius = circleIndex === 0 ? 30 : circleIndex === 1 ? 40 : 50
-    const radius = calculateRadius(config.logos, baseRadius)
-    
-    // Add rotation offset for each circle (approximately 25 degrees per circle)
-    const rotationOffset = (Math.PI / 7) + (circleIndex * 0.5) // Base rotation + small increment per circle
+    const radius = circleIndex === 0 ? 30 : circleIndex === 1 ? 40 : 50
+    const rotationOffset = (Math.PI / 7) + (circleIndex * 0.5)
 
     return config.logos.map((logo, index) => {
       const angle = (index / config.logos.length) * 2 * Math.PI + rotationOffset
@@ -85,10 +56,7 @@ export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
         <div
           key={`circle-${circleIndex}-${index}`}
           className={`absolute ${config.containerSize.mobile} ${config.containerSize.desktop} bg-white rounded-full flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 overflow-hidden`}
-          style={{
-            left: `${left}%`,
-            top: `${top}%`,
-          }}
+          style={{ left: `${left}%`, top: `${top}%` }}
         >
           <Image
             src={logo}
@@ -101,53 +69,41 @@ export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
       )
     })
   }
-  const techAgnosticVideoUrl = "https://player.vimeo.com/video/1063532026?h=3bf80432e2&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1"
 
-  const sectionContent = (
-    <section className={`py-12 bg-[#1a1a1a] relative overflow-hidden ${clickable ? 'cursor-pointer hover:bg-[#1f1f1f] transition-colors' : ''}`}>
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col items-center">
-          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
-            {/* Center text */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-20">
-              <h2 className="text-l sm:text-xl font-bold mb-1">We are tech</h2>
-              <p className="text-l sm:text-xl font-bold">agnostic</p>
-            </div>
+  const content = (
+    <div className={`h-full w-full min-h-[350px] bg-[#1a1a1a] relative overflow-hidden ${clickable ? 'cursor-pointer hover:bg-[#1f1f1f] transition-colors' : ''}`}>
+      <div className="absolute inset-0 opacity-30">
+        <iframe
+          src="https://player.vimeo.com/video/1063532026?h=3bf80432e2&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{ minWidth: '150vw', minHeight: '150vh' }}
+          allow="autoplay; fullscreen"
+          allowFullScreen
+        />
+      </div>
 
-            {/* Three circles of tech logos */}
-            <div className="absolute inset-0 z-10">
-              <div className="relative w-full h-full">
-                {circleConfigs.map((config, index) => renderCircle(config, index))}
-              </div>
-            </div>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-20">
+            <h2 className="text-l sm:text-xl font-bold mb-1">We are tech</h2>
+            <p className="text-l sm:text-xl font-bold">agnostic</p>
+          </div>
+          <div className="absolute inset-0 z-10">
+            {circleConfigs.map((config, index) => renderCircle(config, index))}
           </div>
         </div>
       </div>
-
-      {/* Background video */}
-      <div className="absolute inset-0 opacity-30">
-        <iframe
-            src={techAgnosticVideoUrl}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            allow="playsinline; autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            style={{
-              minWidth: '150vw', // width is not scalling to 100% of the screen - do this hack is needed to make the video full screen
-              minHeight: '150vh' // height is not scalling to 100% of the screen - do this hack is needed to make the video full screen
-            }}
-          />
-      </div>
-    </section>
+    </div>
   )
 
   if (clickable) {
     return (
-      <Link href="/about-us#tech-agnostic" className="block">
-        {sectionContent}
+      <Link href="/about-us#tech-agnostic" className="block h-full">
+        {content}
       </Link>
     )
   }
 
-  return sectionContent
+  return content
 }
 
