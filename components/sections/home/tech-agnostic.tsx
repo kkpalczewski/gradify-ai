@@ -77,15 +77,11 @@ export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
     >
       <div className="absolute inset-0 opacity-30">
         <iframe
-          src="https://player.vimeo.com/video/1063532026?background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1&quality=auto&dnt=1"
-          loading="lazy"
-          allow="autoplay; fullscreen; picture-in-picture"
-          className="absolute inset-0 w-full h-full"
-          style={{
-            border: "none",
-            position: "absolute",
-          }}
-          referrerPolicy="no-referrer"
+          src="https://player.vimeo.com/video/1063532026?h=3bf80432e2&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{ minWidth: "150vw", minHeight: "150vh" }}
+          allow="autoplay; fullscreen"
+          allowFullScreen
         />
       </div>
 

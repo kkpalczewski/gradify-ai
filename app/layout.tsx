@@ -47,6 +47,41 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
+  icons: {
+    other: [
+      {
+        rel: "preconnect",
+        url: "https://player.vimeo.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preconnect",
+        url: "https://i.vimeocdn.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preconnect",
+        url: "https://f.vimeocdn.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "dns-prefetch",
+        url: "https://player.vimeo.com",
+      },
+      {
+        rel: "dns-prefetch",
+        url: "https://i.vimeocdn.com",
+      },
+      {
+        rel: "dns-prefetch",
+        url: "https://f.vimeocdn.com",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -56,6 +91,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preconnect to Vimeo domains */}
+        <link
+          rel="preconnect"
+          href="https://player.vimeo.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://i.vimeocdn.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://f.vimeocdn.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://player.vimeo.com" />
+        <link rel="dns-prefetch" href="https://i.vimeocdn.com" />
+        <link rel="dns-prefetch" href="https://f.vimeocdn.com" />
+      </head>
       <body className="bg-[#1a1a1a]">
         <GoogleAnalytics />
         <Header />
