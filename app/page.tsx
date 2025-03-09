@@ -5,7 +5,7 @@ import { TechAgnostic } from "@/components/sections/home/tech-agnostic";
 
 export default function Home() {
   const welcomeVideoUrl =
-    "https://player.vimeo.com/video/1064073899?h=9a66957aef&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1";
+    "https://player.vimeo.com/video/1064073899?h=9a66957aef&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1";
 
   return (
     <main className="min-h-screen bg-[#1a1a1a] text-white">
@@ -15,7 +15,7 @@ export default function Home() {
           <iframe
             src={welcomeVideoUrl}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30"
-            allow="playsinline; autoplay; fullscreen; picture-in-picture"
+            allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             style={{
               minWidth: "150vw", // width is not scalling to 100% of the screen - do this hack is needed to make the video full screen

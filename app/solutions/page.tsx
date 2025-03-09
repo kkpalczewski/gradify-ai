@@ -53,7 +53,7 @@ export default function SolutionsPage() {
   ];
 
   const letsGrowTogetherVideoUrl =
-    "https://player.vimeo.com/video/1063562708?h=4a66d935e5&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1";
+    "https://player.vimeo.com/video/1063562708?h=4a66d935e5&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1";
   return (
     <main className="bg-[#1a1a1a] text-white">
       {/* Hero Section */}

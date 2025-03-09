@@ -51,37 +51,6 @@ export const metadata: Metadata = {
     width: "device-width",
     initialScale: 1,
   },
-  icons: {
-    other: [
-      {
-        rel: "preconnect",
-        url: "https://player.vimeo.com",
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "preconnect",
-        url: "https://i.vimeocdn.com",
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "preconnect",
-        url: "https://f.vimeocdn.com",
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "dns-prefetch",
-        url: "https://player.vimeo.com",
-      },
-      {
-        rel: "dns-prefetch",
-        url: "https://i.vimeocdn.com",
-      },
-      {
-        rel: "dns-prefetch",
-        url: "https://f.vimeocdn.com",
-      },
-    ],
-  },
 };
 
 export default function RootLayout({
