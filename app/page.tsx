@@ -5,7 +5,7 @@ import { TechAgnostic } from "@/components/sections/home/tech-agnostic";
 
 export default function Home() {
   const welcomeVideoUrl =
-    "https://player.vimeo.com/video/1064072296?h=102cfe6597&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1";
+    "https://player.vimeo.com/video/1064073899?h=9a66957aef&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1";
 
   return (
     <main className="min-h-screen bg-[#1a1a1a] text-white">
