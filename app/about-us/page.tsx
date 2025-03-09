@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { ContactForm } from "@/components/sections/contact/contact-form";
-import { ContactInfo } from "@/components/sections/contact/contact-info";
 import { ContentTile } from "@/components/sections/about-us/content-tile";
 
 const contentTiles = [

@@ -1,56 +1,57 @@
-import Image from "next/image"
-import Link from "next/link"
-import { getTechLogos } from "./tech-logos"
+import Image from "next/image";
+import Link from "next/link";
+import { getTechLogos } from "./tech-logos";
 
 interface CircleConfig {
-  logos: string[]
+  logos: string[];
   containerSize: {
-    mobile: string
-    desktop: string
-  }
+    mobile: string;
+    desktop: string;
+  };
   imageSize: {
-    mobile: string
-    desktop: string
-  }
+    mobile: string;
+    desktop: string;
+  };
 }
 
 interface TechAgnosticProps {
-  clickable?: boolean
+  clickable?: boolean;
 }
 
 export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
-  const allLogos = getTechLogos()
-  const logosPerCircle = Math.ceil(allLogos.length / 3)
-  const innerLogos = allLogos.slice(0, logosPerCircle)
-  const middleLogos = allLogos.slice(logosPerCircle, logosPerCircle * 2)
-  const outerLogos = allLogos.slice(logosPerCircle * 2)
+  const allLogos = getTechLogos();
+  const logosPerCircle = Math.ceil(allLogos.length / 3);
+  const innerLogos = allLogos.slice(0, logosPerCircle);
+  const middleLogos = allLogos.slice(logosPerCircle, logosPerCircle * 2);
+  const outerLogos = allLogos.slice(logosPerCircle * 2);
 
   const circleConfigs: CircleConfig[] = [
     {
       logos: innerLogos,
       containerSize: { mobile: "w-7 h-7", desktop: "sm:w-9 sm:h-9" },
-      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" }
+      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" },
     },
     {
       logos: middleLogos,
       containerSize: { mobile: "w-7 h-7", desktop: "sm:w-9 sm:h-9" },
-      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" }
+      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" },
     },
     {
       logos: outerLogos,
       containerSize: { mobile: "w-7 h-7", desktop: "sm:w-9 sm:h-9" },
-      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" }
-    }
-  ]
+      imageSize: { mobile: "w-6 h-6", desktop: "sm:w-8 sm:h-8" },
+    },
+  ];
 
   const renderCircle = (config: CircleConfig, circleIndex: number) => {
-    const radius = circleIndex === 0 ? 30 : circleIndex === 1 ? 40 : 50
-    const rotationOffset = (Math.PI / 7) + (circleIndex * 0.5)
+    const radius = circleIndex === 0 ? 30 : circleIndex === 1 ? 40 : 50;
+    const rotationOffset = Math.PI / 7 + circleIndex * 0.5;
 
     return config.logos.map((logo, index) => {
-      const angle = (index / config.logos.length) * 2 * Math.PI + rotationOffset
-      const left = 50 + radius * Math.cos(angle)
-      const top = 50 + radius * Math.sin(angle)
+      const angle =
+        (index / config.logos.length) * 2 * Math.PI + rotationOffset;
+      const left = 50 + radius * Math.cos(angle);
+      const top = 50 + radius * Math.sin(angle);
 
       return (
         <div
@@ -66,19 +67,25 @@ export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
             className={`${config.imageSize.mobile} ${config.imageSize.desktop} object-cover`}
           />
         </div>
-      )
-    })
-  }
+      );
+    });
+  };
 
   const content = (
-    <div className={`h-full w-full min-h-[350px] bg-[#1a1a1a] relative overflow-hidden ${clickable ? 'cursor-pointer hover:bg-[#1f1f1f] transition-colors' : ''}`}>
+    <div
+      className={`h-full w-full min-h-[350px] bg-[#1a1a1a] relative overflow-hidden ${clickable ? "cursor-pointer hover:bg-[#1f1f1f] transition-colors" : ""}`}
+    >
       <div className="absolute inset-0 opacity-30">
         <iframe
-          src="https://player.vimeo.com/video/1063532026?h=3bf80432e2&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{ minWidth: '150vw', minHeight: '150vh' }}
-          allow="autoplay; fullscreen"
-          allowFullScreen
+          src="https://player.vimeo.com/video/1063532026?background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1&quality=auto&dnt=1"
+          loading="lazy"
+          allow="autoplay; fullscreen; picture-in-picture"
+          className="absolute inset-0 w-full h-full"
+          style={{
+            border: "none",
+            position: "absolute",
+          }}
+          referrerPolicy="no-referrer"
         />
       </div>
 
@@ -94,16 +101,15 @@ export function TechAgnostic({ clickable = false }: TechAgnosticProps) {
         </div>
       </div>
     </div>
-  )
+  );
 
   if (clickable) {
     return (
       <Link href="/about-us#tech-agnostic" className="block h-full">
         {content}
       </Link>
-    )
+    );
   }
 
-  return content
+  return content;
 }
-

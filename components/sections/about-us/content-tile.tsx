@@ -1,20 +1,20 @@
-import Image from "next/image"
-import Link from "next/link"
-import { TechAgnostic } from "@/components/sections/home/tech-agnostic"
+import Image from "next/image";
+import Link from "next/link";
+import { TechAgnostic } from "@/components/sections/home/tech-agnostic";
 
 interface ContentTileProps {
-  title?: string
-  content: string[]
+  title?: string;
+  content: string[];
   image: {
-    src: string
-    alt: string
-    aspectRatio?: string
-  }
-  isReversed?: boolean
-  isTechAgnostic?: boolean
-  buttonText?: string
-  buttonLink?: string
-  id?: string
+    src: string;
+    alt: string;
+    aspectRatio?: string;
+  };
+  isReversed?: boolean;
+  isTechAgnostic?: boolean;
+  buttonText?: string;
+  buttonLink?: string;
+  id?: string;
 }
 
 export function ContentTile({
@@ -36,7 +36,9 @@ export function ContentTile({
         {content.map((paragraph, index) => (
           <p
             key={index}
-            className={paragraph.includes("tech agnostic") ? "text-[#f0cc22]" : ""}
+            className={
+              paragraph.includes("tech agnostic") ? "text-[#f0cc22]" : ""
+            }
           >
             {paragraph}
           </p>
@@ -53,7 +55,7 @@ export function ContentTile({
         </div>
       )}
     </div>
-  )
+  );
 
   const visualContent = (
     <div className="bg-white rounded-lg flex items-center justify-center w-full h-full md:col-span-4">
@@ -62,7 +64,9 @@ export function ContentTile({
           <TechAgnostic />
         </div>
       ) : (
-        <div className={`relative w-full h-full ${image.aspectRatio || 'aspect-[1]'}`}>
+        <div
+          className={`relative w-full h-full ${image.aspectRatio || "aspect-[1]"}`}
+        >
           <Image
             src={image.src}
             alt={image.alt}
@@ -72,10 +76,10 @@ export function ContentTile({
         </div>
       )}
     </div>
-  )
+  );
 
   return (
-    <section id={id} className="py-16">
+    <section id={id} className="py-4">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#141416] rounded-lg overflow-hidden">
           {isReversed ? (
@@ -92,5 +96,5 @@ export function ContentTile({
         </div>
       </div>
     </section>
-  )
-} 
+  );
+}
