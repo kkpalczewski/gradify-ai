@@ -6,10 +6,11 @@ const contentTiles = [
     title: "Our Story",
     content: [
       "gradify.ai is a data science boutique, founded to help companies innovate with their data. Simply.",
-      'The word "gradify" is a shortened version of "gradient," which is based on the mathematical formula for ML computing. Nowadays, gradient descent optimization is the most popular algorithm for neural networks and deep learning expertise. (Our company\'s name is literally "Optimal Solution," but we also realized that!)',
-      "We are a part of something much bigger: the global community and open-source tools which have made data science and data engineering accessible to the majority of companies. It's time now to get back as much to promote what we've learned and to share our knowledge with others. We are passionate regarding data, and we realize that one has to have a comprehensive understanding of data points.",
-      "We come from a rich tech of life: we were creative and data scientists, managers, and entrepreneurs.",
-      'We also develop our own "frameworks," which are basically knowledge of our employees and external contractors. Speaking of contractors, we have a side network of highly-regarded and well-known experts in data science and ML.',
+      'The name "gradify.ai" is a shortened version of "gradient," which is based on the widely known (in the ML community) "stochastic gradient descent" optimization. It reflects our obsessive drive to tackle business problems with deep technical expertise. (Our company\'s name was originally "Optimal Gradient," but we also optimized that!)',
+      "There are multiple algorithms, solutions, open source frameworks and other tools which have made data science and data engineering accessible to the majority of companies. It is also easy to get lost in such a dynamic world.",
+      "We met with numerous companies to discuss with business owners their needs regarding data, and we realized that one has to have a comprehensive approach to every data project.",
+      "So here we are, implementing state-of-the-art data science and data engineering frameworks, reducing risk, time and costs.",
+      'We also develop our own "frameworks," which are basically knowledge of our employees and external contractors. Speaking of contractors, we have a wide network of bright engineers and we never hesitate to avail ourselves of them!',
     ],
     image: {
       src: "/about_us/our_story.avif",
@@ -19,10 +20,10 @@ const contentTiles = [
   },
   {
     content: [
-      "We are tech agnostic, because we build solutions based on our partners' needs, not based on our technological knowledge for our team.",
-      "That that we have started to develop tools that, what is efficient and what type of technology most often works, but we obviously every project individually. We have a lot of technological and technological tools, experience to change or cost of change management.",
-      "In practice, our approach and system knowledge, so if there are specific needs for a project, we can easily find the right people for the job. We have a network of the issue and source contractors from our network or hire creative, professional solutions.",
-      "Agnostic approach also means that we try to stay up-to-date with professional ready team source solutions and external vendors (e.g., cloud providers) so that we can enhance projects with the current best practices.",
+      "We are tech agnostic, because we build solutions based on our partners' needs, not based on the most convenient framework for our team.",
+      "It is clear that we have internal knowledge and insights into what is efficient and what type of technology most often works, but we approach every project individually. This means taking into consideration technological debt, openness to change or cost of change management.",
+      "We also know our specialties and current resources, so if there are specific tasks which require employees who are not currently available, we openly talk about the issue and source contractors from our network or find creative, professional solutions.",
+      "Being tech agnostic also means that we try to stay up-to-date with production-ready open source solutions and external providers (e.g., cloud providers) so that we can execute projects with the current best practices.",
     ],
     image: {
       src: "",
@@ -37,10 +38,10 @@ const contentTiles = [
     title: "Want to join or partner with us?",
     content: [
       "We are constantly striving to be ahead of the data world, and we are open to sharing our experience, as well as learning from others.",
-      "We have data science labs and individuals that have specific needs for industry experts to contact us.",
-      "We're also constantly developing our network of external contractors so that we can be absolutely technology independent in projects for our clients. Thus, if you're a data scientist, data engineer, data engineering or data visualization are welcome to contact us.",
-      "Lastly, if you're an industry expert or ambitious almost-intern and you have a strong feeling that you would be a good fit or partner, you are more than welcome to contact us. We are always looking for talented individuals for temporary or long-term cooperation.",
-      "Providing our clients professional, valuable services for our clients is always our top priority. To help serve clients, we are passionate about our work and we are constantly learning and creating with other passionate, talented organizations and individuals.",
+      "We invite data science labs and institutions that have specific needs for industry experts to contact us.",
+      "We’re also constantly developing our network of external contractors so that we can be absolutely technology independent in projects for our clients. Thus, external contractors working in data science, data engineering or data visualization are welcome to contact us. ",
+      "Lastly, if you’re an industry expert or ambitious almost-intern and you have a strong feeling that you would be a good fit at gradify.ai, you are more than welcome to contact us. Sometimes we have a need for specific skills or attitudes for temporary or long-term cooperation.",
+      "Delivering on-time, professional, valuable services for our clients is always our top priority. By the same token, we are passionate about our work and we are open to discussing and creating with other passionate, visionary organizations and individuals.",
       "Think big, act bigger.",
     ],
     image: {
