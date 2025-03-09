@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Contact } from "@/components/sections/contact/contact";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Data Science Boutique | Data Strategy | gradify.ai",
@@ -46,10 +51,6 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "your-google-verification-code",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
   },
 };
 
