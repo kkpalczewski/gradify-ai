@@ -3,6 +3,8 @@ import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Contact } from "@/components/sections/contact/contact";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+
 export const metadata: Metadata = {
   title: "Data Science Boutique | Data Strategy | gradify.ai",
   description: "AI-powered grading and assessment platform",
@@ -17,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#1a1a1a]">
+        <GoogleAnalytics />
         <Header />
         {children}
         <Contact />
