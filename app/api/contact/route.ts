@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     const mailData = {
       to: "contact@gradify.ai",
       from: {
-        email: "krzysztof.palczewski@gradify.ai",
+        email: "contact@gradify.ai",
         name: "Gradify Contact Form",
       },
       replyTo: {
