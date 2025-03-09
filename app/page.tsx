@@ -1,19 +1,17 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ContactForm } from "@/components/sections/contact/contact-form"
-import { Testimonials } from "@/components/sections/home/testimonials"
-import { BusinessTech } from "@/components/sections/home/business-tech"
-import { TechAgnostic } from "@/components/sections/home/tech-agnostic"
-import { ContactInfo } from "@/components/sections/contact/contact-info"
+import Link from "next/link";
+import { Contact } from "@/components/sections/contact/contact";
+import { Testimonials } from "@/components/sections/home/testimonials";
+import { BusinessTech } from "@/components/sections/home/business-tech";
+import { TechAgnostic } from "@/components/sections/home/tech-agnostic";
 
 export default function Home() {
-  const welcomeVideoUrl = "https://player.vimeo.com/video/1063639354?h=8f307f7669&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1"
+  const welcomeVideoUrl =
+    "https://player.vimeo.com/video/1063639354?h=8f307f7669&background=1&autoplay=1&loop=1&byline=0&title=0&controls=0&muted=1&playsinline=1";
 
   return (
     <main className="min-h-screen bg-[#1a1a1a] text-white">
       {/* Hero Section */}
       <section className="relative bg-[#141416] py-16 md:py-24">
-        
         <div className="absolute inset-0 overflow-hidden">
           <iframe
             src={welcomeVideoUrl}
@@ -21,8 +19,8 @@ export default function Home() {
             allow="playsinline; autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             style={{
-              minWidth: '150vw', // width is not scalling to 100% of the screen - do this hack is needed to make the video full screen
-              minHeight: '150vh' // height is not scalling to 100% of the screen - do this hack is needed to make the video full screen
+              minWidth: "150vw", // width is not scalling to 100% of the screen - do this hack is needed to make the video full screen
+              minHeight: "150vh", // height is not scalling to 100% of the screen - do this hack is needed to make the video full screen
             }}
           />
         </div>
@@ -54,7 +52,6 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            
           </div>
         </div>
       </section>
@@ -67,18 +64,6 @@ export default function Home() {
 
       {/* Tech Agnostic Section */}
       <TechAgnostic clickable />
-
-      {/* Contact Us Section */}
-      <section className="py-16 bg-[#1a1a1a]" id="contact">
-        <div className="container mx-auto px-6 md:px-12">
-          <h2 className="text-4xl font-bold text-center mb-12">Contact Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ContactForm />
-            <ContactInfo />
-          </div>
-        </div>
-      </section>
     </main>
-  )
+  );
 }
-
